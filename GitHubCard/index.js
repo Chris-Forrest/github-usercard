@@ -35,7 +35,13 @@
           user, and adding that card to the DOM.
 */
 
-const followersArray = [];
+const followersArray = [
+  'tetondan',
+  'dustinmyers',
+  'justsml',
+  'luishrd',
+  'bigknell',
+];
 
 /* Step 3: Create a function that accepts a single object as its only argument,
           Using DOM methods and properties, create a component that will return the following DOM element:
@@ -56,7 +62,7 @@ const followersArray = [];
 </div>
 */
 /****************************function start*************************** */
-function gitCard({imgURL, cardinfo, name, userName, location, profile,followers, following, bio, href}){
+function gitCard(userData){
 
   /***************create elements start*********************************** */
   const card = document.createElement('div')
@@ -83,6 +89,26 @@ function gitCard({imgURL, cardinfo, name, userName, location, profile,followers,
   cardInfo.appendChild(followers)
   cardInfo.appendChild(following)
   cardInfo.appendChild(bio)
+
+  /****************add class names *************** */
+
+  card.classList.add('card')
+  cardInfo.classList.add('card-info')
+  name.classList.add('name')
+  userName.classList.add('username')
+
+/********** set text url and href ***********************************/
+
+image.src = userData.avatar_url
+name.textContent = userData.name
+userName.textContent = userData.login
+location.textContent = `Location: ${userData.location}`
+profile.textContent = 'Profile:'
+aHref.textContent = userData.html_url
+aHref.href = userData.html_url
+followers.textContent = `Followers: ${userData.followers}`
+following.textContent = `Following: ${userData.following}`
+bio.textContent = `Bio: ${userData.bio}`
 
 
 }
