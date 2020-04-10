@@ -34,6 +34,7 @@
           Using that array, iterate over it, requesting data for each user, creating a new card for each
           user, and adding that card to the DOM.
 */
+const gitCards = document.querySelector('.cards')
 
 const followersArray = [
   'tetondan',
@@ -41,7 +42,26 @@ const followersArray = [
   'justsml',
   'luishrd',
   'bigknell',
+  'cdfallday'
 ];
+const getUser = () => {
+  followersArray.forEach( item => {
+    axios.get(`https://api.github.com/users/${item}`)
+.then(
+  myGit => {
+    console.log(myGit.data);
+    gitCards.appendChild(gitCard(myGit.data))
+  })
+
+  .catch(
+    errorMessage => {
+      console.log(errorMessage);
+    })
+  })
+}
+
+getUser();
+
 
 /* Step 3: Create a function that accepts a single object as its only argument,
           Using DOM methods and properties, create a component that will return the following DOM element:
@@ -110,7 +130,7 @@ followers.textContent = `Followers: ${userData.followers}`
 following.textContent = `Following: ${userData.following}`
 bio.textContent = `Bio: ${userData.bio}`
 
-
+return card
 }
 /* List of LS Instructors Github username's: 
   tetondan
