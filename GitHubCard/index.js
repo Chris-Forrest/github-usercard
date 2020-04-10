@@ -2,7 +2,7 @@
            (replacing the palceholder with your Github name):
            https://api.github.com/users/<your name>
 */
-axios.get('https://api.github.com/users/cdfallday')
+/*axios.get('https://api.github.com/users/cdfallday')
 .then(
   myGit => {
     console.log(myGit)
@@ -13,7 +13,7 @@ axios.get('https://api.github.com/users/cdfallday')
     errorMessage => {
       console.log(errorMessage)
     }
-  )
+  )*/
 /* Step 2: Inspect and study the data coming back, this is YOUR 
    github info! You will need to understand the structure of this 
    data in order to use it to build your component function 
@@ -55,7 +55,37 @@ const followersArray = [];
   </div>
 </div>
 */
-function gitCard()
+/****************************function start*************************** */
+function gitCard({imgURL, cardinfo, name, userName, location, profile,followers, following, bio, href}){
+
+  /***************create elements start*********************************** */
+  const card = document.createElement('div')
+  const image = document.createElement('img')
+  const cardInfo = document.createElement('div')
+  const name = document.createElement('h3')
+  const userName = document.createElement('p')
+  const location = document.createElement('p')
+  const profile = document.createElement('p')
+  const aHref = document.createElement('a')
+  const followers = document.createElement('p')
+  const following = document.createElement('p')
+  const bio = document.createElement('p')
+
+  /******************nesting elements start  ********************************* */
+
+  card.appendChild(image)
+  card.appendChild(cardInfo)
+  cardInfo.appendChild(name)
+  cardInfo.appendChild(userName)
+  cardInfo.appendChild(location)
+  cardInfo.appendChild(profile)
+  profile.appendChild(aHref)
+  cardInfo.appendChild(followers)
+  cardInfo.appendChild(following)
+  cardInfo.appendChild(bio)
+
+
+}
 /* List of LS Instructors Github username's: 
   tetondan
   dustinmyers
